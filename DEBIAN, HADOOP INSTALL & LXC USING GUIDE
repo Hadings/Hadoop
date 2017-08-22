@@ -1,0 +1,133 @@
+1. Debian Install
+
+1-1. Install URL
+
+Https://www.debian.org/releases/stable/installmanual
+
+1-2. KDE adoption
+
+ You can set up your desktop environment when installing Debian. I checked KDE in the configuration window and disabled everything else. This is to set it as I want, one by one, in a pure (?) State.
+
+2. Debian Setting
+
+2-1. Oh My Zsh
+
+ Oh My Zsh is a framework for dealing with the configuration of zsh, a more recent shell from bash, and is very active in community activities, with over 120 themes and 120 plugins.
+ First, Oh My Zsh To install zsh course must be installed and must curl or wget, the last git installed. 
+ Oh My The biggest reason to use Zsh is in fact a visual effect. This is better than the grayish one too.
+
+Installation note URL
+Https://nolboo.kim/blog/2015/08/21/oh-my-zsh/
+
+2-2. JDK Install
+
+$ Sudo apt install openjdk-8-jdk
+
+$ Sudo vi / etc / environment
+
+JAVA_HOME = "/ usr / lib / jvm / openjdk-8-jdk"
+
+$ Source / etc / environment
+
+$ Echo $ JAVA_HOME
+
+$ Java -version
+
+3. LXC Install
+
+3-1. Install Command
+
+Sudo apt install lxc
+
+3-2. Learning LXC Command
+
+ 1) lxc-ls: Display the list of containers present in the system.
+
+  Option) -f, --fancy: Pretty, column based output.
+
+ 2) lxc-create: Create container.
+
+  Option) 
+   -t, --template template : The template is the short name of the 'lxc-template' script, including busybox, debian, fedora, ubuntu, and sshd. 
+
+  Common option)
+   -n, --name = NAME : Use NAME as the container identifier. The format of the container identifier is an alphanumeric string.
+
+ Ex) lxc-create -n test -t download : Create a container named 'test'. You can specify the root file system.
+
+ 3) lxc-start: Start the container (execute).
+
+  Option) 
+   -c, --console console_device : Specifies the device to be used as the console of the container. For example, / dev / tty8. If this option is not specified and -d is not specified, the current terminal is used.
+
+   -L, --console-log console_logfile : Specifies the file to write the console output of the container.
+
+  Ex) lxc-start -n test : Run a container named 'test'.
+
+ 4) lxc-stop: Terminate the container.
+
+  Option) 
+   -r, --reboot : Reboot the container.
+
+  Ex) lxc-stop test : Terminate the container named 'test'.
+
+ 5) lxc-copy: copy the existing container.
+
+  Option) 
+   -N, --newname newname : Name of the copy
+
+   -p, --newpath newpath : Path to the copy
+
+   -R, --rename : Rename the source container
+
+   -K, --keepname : If this option is specified, the host name of the original container remains in the copy.
+
+   -M, --keepmac : If this option is specified, the MAC address of the original container remains in the copy.
+
+  Ex) lxc-copy -N test-namenode-sec -n test : Create a container named 'test-namenode-sec' that duplicates the container named 'test'.
+
+ 6) lxc-console: Run the console of the specified container. 
+  If you want to disconnect from tty and exit lxc-console, use the escape key. The default key is <Ctrl + a q>.
+
+  Ex) lxc-console -n test: Run the console of the container named 'test'.
+
+ 7) lxc-attach: Execute the process in the running container.
+
+  Ex) lxc-attach -n test: Run the process in a container named 'test'. It runs as root.
+
+ 8) lxc-destroy: Remove Container
+
+  Ex) lxc-destory -n test: Removes the container named 'test'.
+
+
+3-3.  LXC Container Setting
+
+ 1) Preset for kernel use
+
+  Cd ~ / .local / share / lxc
+
+  You can see the directory for the container I created.
+
+  Go into the test directory you created earlier and modify the config file.
+
+  Sudo nano ~ / .local / share / lxc / test / config
+  
+  To create a non-privileged container, you need to use kernel functionality.
+
+  Cd /etc/sysctl.d
+
+  Nano /etc/sysctl.d/10-unpriv-lxc.conf
+
+  >> kernel.unpriviledged_userns_clone = 1
+
+4. Hadoop Install
+
+4-1. Install URL
+
+Http://hadoop.apache.org/releases.html
+
+Install the desired version binary file.
+
+I installed hadoop-2.8.1. ** Today's date (2017-08-11)
+
+Hadoop-2.8.1.tar.gz

@@ -1,0 +1,4 @@
+//If you work in demo, hive does not work well.
+
+hadoop fs -ls /apps/hive/warehouse  //in this here, we get hive files
+hive -f labs/demos/partitiondemo.sql  // start!! hive strew part

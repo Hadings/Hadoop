@@ -3,3 +3,10 @@ answer
 1.3 meta store
 
 2.2 no
+
+Jobbrowser => version 2 in application 
+open your browser : 127.0.0.1: 8088 
+
+//In here, you get some information. 
+//How many Map, reduce count and so on.
+
